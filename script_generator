@@ -1,0 +1,87 @@
+#!/bin/bash
+
+#####################################################
+# Use dot (.) plus space before the name of scripts #
+#  because of the use of "cd" inside some scripts.  #
+#####################################################
+
+cd ~/Documentos
+
+# Delete the folder, case it already exists.
+if [ -d ~/Documentos/generated_scripts ]; then
+  sudo rm -R generated_scripts
+fi
+
+# Create the folder and gives permision.
+sudo mkdir generated_scripts
+# sudo chmod 777 -R generated_scripts
+
+# Enter the folder.
+cd generated_scripts
+
+# Create script files
+sudo touch go_gulp;
+sudo touch go_source;
+sudo touch up;
+sudo touch css;
+sudo touch js;
+sudo touch vpn;
+sudo touch make_ssh;
+
+# Gives permissin to folder
+sudo chmod 777 -R ../generated_scripts
+
+# Add content to files.
+# go_gulp
+echo "#!/bin/bash
+
+cd ~/projetos/puc/vestibulares-com-br-source/code/all/themes/krot_theme/.gulp" >> go_gulp;
+
+# go_source
+echo "#!/bin/bash
+
+cd ~/projetos/puc/vestibulares-com-br-source" >> go_source;
+
+# up
+echo "#!/bin/bash
+
+cd ~/projetos/puc/vestibulares-com-br-environment
+
+sudo docker-compose up -d" >> up;
+
+# css
+echo "#!/bin/bash
+
+cd ~/projetos/puc/vestibulares-com-br-source/code/all/themes/krot_theme/.gulp
+
+gulp build:less" >> css;
+
+# js
+echo "#!/bin/bash
+
+cd ~/projetos/puc/vestibulares-com-br-source/code/all/themes/krot_theme/.gulp
+
+gulp build:less" >> js;
+
+# vpn
+echo "#!/bin/bash
+
+# Open connection to Kroton VPN.
+sudo openconnect --juniper vpn.kroton.com.br
+" >> vpn;
+
+# make_ssh
+echo "#!/bin/bash
+
+sudo docker exec -it krot-web bash" >> make_ssh;
+
+# Move the scripts to /usr/bin and give permision to then.
+$DIR = /usr/bin
+
+sudo cp go_gulp $DIR;
+sudo cp go_source $DIR && chmod 777 $DIR/go_source;
+sudo cp up $DIR && chmod 777 $DIR/up;
+sudo cp css $DIR && chmod 777 $DIR/css;
+sudo cp js $DIR && chmod 777 $DIR/js;
+sudo cp vpn $DIR && chmod 777 $DIR/vpn;
+sudo cp make_ssh $DIR && chmod 777 $DIR/make_ssh;
