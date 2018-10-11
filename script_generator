@@ -76,12 +76,12 @@ echo "#!/bin/bash
 sudo docker exec -it krot-web bash" >> make_ssh;
 
 # Move the scripts to /usr/bin and give permision to then.
-$DIR = /usr/bin
+DIR=/usr/bin;
 
 sudo cp go_gulp $DIR;
-sudo cp go_source $DIR && chmod 777 $DIR/go_source;
-sudo cp up $DIR && chmod 777 $DIR/up;
-sudo cp css $DIR && chmod 777 $DIR/css;
-sudo cp js $DIR && chmod 777 $DIR/js;
-sudo cp vpn $DIR && chmod 777 $DIR/vpn;
-sudo cp make_ssh $DIR && chmod 777 $DIR/make_ssh;
+sudo cp go_source $DIR;
+sudo cp up $DIR;
+sudo cp css $DIR;
+sudo cp js $DIR;
+sudo cp vpn $DIR;
+sudo cp make_ssh $DIR;
